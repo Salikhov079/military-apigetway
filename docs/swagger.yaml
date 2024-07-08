@@ -1,0 +1,1311 @@
+definitions:
+  ai.AiCHat:
+    properties:
+      text:
+        type: string
+      user_id:
+        type: string
+    type: object
+  militaries.AllBullets:
+    properties:
+      bullets:
+        items:
+          $ref: '#/definitions/militaries.Bullet'
+        type: array
+    type: object
+  militaries.AllFuels:
+    properties:
+      fuels:
+        items:
+          $ref: '#/definitions/militaries.Fuel'
+        type: array
+    type: object
+  militaries.AllTechnique:
+    properties:
+      techniques:
+        items:
+          $ref: '#/definitions/militaries.Technique'
+        type: array
+    type: object
+  militaries.Bullet:
+    properties:
+      caliber:
+        type: number
+      id:
+        type: string
+      quantity:
+        type: integer
+      type:
+        type: string
+    type: object
+  militaries.BulletReq:
+    properties:
+      caliber:
+        type: number
+      quantity:
+        type: integer
+      type:
+        type: string
+    type: object
+  militaries.Fuel:
+    properties:
+      id:
+        type: string
+      quantity:
+        type: integer
+      type:
+        type: string
+    type: object
+  militaries.FuelReq:
+    properties:
+      quantity:
+        type: integer
+      type:
+        type: string
+    type: object
+  militaries.Technique:
+    properties:
+      id:
+        type: string
+      model:
+        type: string
+      quantity:
+        type: integer
+      type:
+        type: string
+    type: object
+  militaries.TechniqueReq:
+    properties:
+      model:
+        type: string
+      quantity:
+        type: integer
+      type:
+        type: string
+    type: object
+  soldiers.AllCommanders:
+    properties:
+      commanders:
+        items:
+          $ref: '#/definitions/soldiers.Commander'
+        type: array
+    type: object
+  soldiers.AllDepartments:
+    properties:
+      departments:
+        items:
+          $ref: '#/definitions/soldiers.Department'
+        type: array
+    type: object
+  soldiers.AllGroups:
+    properties:
+      groups:
+        items:
+          $ref: '#/definitions/soldiers.Group'
+        type: array
+    type: object
+  soldiers.AllSoldiers:
+    properties:
+      soldiers:
+        items:
+          $ref: '#/definitions/soldiers.Soldier'
+        type: array
+    type: object
+  soldiers.Commander:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      position:
+        type: string
+    type: object
+  soldiers.CreateCommand:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  soldiers.CreateDeportment:
+    properties:
+      commanders_id:
+        type: string
+      name:
+        type: string
+    type: object
+  soldiers.CreateSoldier:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      end_date:
+        type: string
+      group:
+        $ref: '#/definitions/soldiers.Group'
+      join_date:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  soldiers.Department:
+    properties:
+      commander:
+        $ref: '#/definitions/soldiers.Commander'
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  soldiers.Group:
+    properties:
+      department:
+        $ref: '#/definitions/soldiers.Department'
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  soldiers.GroupReq:
+    properties:
+      department_id:
+        type: string
+      name:
+        type: string
+    type: object
+  soldiers.Soldier:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      end_date:
+        type: string
+      group:
+        $ref: '#/definitions/soldiers.Group'
+      id:
+        type: string
+      join_date:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  soldiers.UseB:
+    properties:
+      date:
+        type: string
+      quantity_big_weapon:
+        type: integer
+      quantity_weapon:
+        type: integer
+      soldier_id:
+        type: string
+    type: object
+  soldiers.UseF:
+    properties:
+      date:
+        type: string
+      diesel:
+        type: integer
+      petrol:
+        type: integer
+      soldier_id:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /ai/chat:
+    post:
+      consumes:
+      - application/json
+      description: CHat with AI
+      parameters:
+      - description: Bullet Request
+        in: body
+        name: BulletReq
+        required: true
+        schema:
+          $ref: '#/definitions/ai.AiCHat'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: CHAT
+      tags:
+      - AI
+  /ai/gethistory/{id}:
+    get:
+      consumes:
+      - application/json
+      description: CHat with AI
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: GetHistory
+      tags:
+      - AI
+  /bullet/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new bullet
+      parameters:
+      - description: Bullet Request
+        in: body
+        name: BulletReq
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.BulletReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Bullet
+      tags:
+      - Bullet
+  /bullet/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing bullet
+      parameters:
+      - description: Bullet ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Bullet
+      tags:
+      - Bullet
+  /bullet/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing bullet by ID
+      parameters:
+      - description: Bullet ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Bullet'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Bullet
+      tags:
+      - Bullet
+  /bullet/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all bullets
+      parameters:
+      - in: query
+        name: caliber
+        type: number
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/militaries.AllBullets'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Bullets
+      tags:
+      - Bullet
+  /bullet/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing bullet
+      parameters:
+      - description: Bullet ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Bullet
+        in: body
+        name: Bullet
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.Bullet'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Bullet
+      tags:
+      - Bullet
+  /commander/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new commander
+      parameters:
+      - description: Commander Request
+        in: body
+        name: CommanderReq
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.CreateCommand'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Commander
+      tags:
+      - Commander
+  /commander/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing commander
+      parameters:
+      - description: Commander ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Commander
+      tags:
+      - Commander
+  /commander/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing commander by ID
+      parameters:
+      - description: Commander ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/soldiers.Commander'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Commander
+      tags:
+      - Commander
+  /commander/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all commanders
+      parameters:
+      - in: query
+        name: email
+        type: string
+      - in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.AllCommanders'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Commanders
+      tags:
+      - Commander
+  /commander/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing commander
+      parameters:
+      - description: Commander ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Commander
+        in: body
+        name: Commander
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.Commander'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Commander
+      tags:
+      - Commander
+  /department/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new department
+      parameters:
+      - description: Department
+        in: body
+        name: Department
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.CreateDeportment'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Department
+      tags:
+      - Department
+  /department/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing department
+      parameters:
+      - description: Department ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Department
+      tags:
+      - Department
+  /department/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing department by ID
+      parameters:
+      - description: Department ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/soldiers.Department'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Department
+      tags:
+      - Department
+  /department/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all departments
+      parameters:
+      - in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.AllDepartments'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Departments
+      tags:
+      - Department
+  /department/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing department
+      parameters:
+      - description: Department ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Department
+        in: body
+        name: Department
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.Department'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Department
+      tags:
+      - Department
+  /fuel/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new fuel entry
+      parameters:
+      - description: Fuel Request
+        in: body
+        name: FuelReq
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.FuelReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "400":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Fuel
+      tags:
+      - Fuel
+  /fuel/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing fuel entry
+      parameters:
+      - description: Fuel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "400":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Fuel
+      tags:
+      - Fuel
+  /fuel/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing fuel entry by ID
+      parameters:
+      - description: Fuel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Fuel'
+        "400":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Fuel
+      tags:
+      - Fuel
+  /fuel/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all fuel entries
+      parameters:
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/militaries.AllFuels'
+        "400":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Fuels
+      tags:
+      - Fuel
+  /fuel/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing fuel entry
+      parameters:
+      - description: Fuel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Fuel
+        in: body
+        name: Fuel
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.Fuel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "400":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Fuel
+      tags:
+      - Fuel
+  /group/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new group
+      parameters:
+      - description: Group Request
+        in: body
+        name: GroupReq
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.GroupReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Group
+      tags:
+      - Group
+  /group/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Group
+      tags:
+      - Group
+  /group/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing group by ID
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/soldiers.Group'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Group
+      tags:
+      - Group
+  /group/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all groups
+      parameters:
+      - in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.AllGroups'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Groups
+      tags:
+      - Group
+  /group/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing group
+      parameters:
+      - description: Group ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Group
+        in: body
+        name: Group
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.Group'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Group
+      tags:
+      - Group
+  /soldier/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new soldier
+      parameters:
+      - description: Soldier Request
+        in: body
+        name: SoldierReq
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.CreateSoldier'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "401":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Soldier
+      tags:
+      - Soldier
+  /soldier/dashbord:
+    get:
+      consumes:
+      - application/json
+      description: Get all Dashbord
+      parameters:
+      - in: query
+        name: date_of_birth
+        type: string
+      - in: query
+        name: email
+        type: string
+      - in: query
+        name: end_date
+        type: string
+      - in: query
+        name: group_id
+        type: string
+      - in: query
+        name: join_date
+        type: string
+      - in: query
+        name: name
+        type: string
+      - in: query
+        name: phone_number
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.AllSoldiers'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Dashbord
+      tags:
+      - Dashbord
+  /soldier/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing soldier
+      parameters:
+      - description: Soldier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "401":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Soldier
+      tags:
+      - Soldier
+  /soldier/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing soldier by ID
+      parameters:
+      - description: Soldier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/soldiers.Soldier'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Soldier
+      tags:
+      - Soldier
+  /soldier/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all soldiers
+      parameters:
+      - in: query
+        name: age
+        type: string
+      - in: query
+        name: email
+        type: string
+      - in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.AllSoldiers'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Soldiers
+      tags:
+      - Soldier
+  /soldier/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing soldier
+      parameters:
+      - description: Soldier ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Soldier
+        in: body
+        name: Soldier
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.Soldier'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "401":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Soldier
+      tags:
+      - Soldier
+  /soldier/usebullet:
+    post:
+      consumes:
+      - application/json
+      description: Record the use of bullets by a soldier
+      parameters:
+      - description: Use Bullet
+        in: body
+        name: UseB
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.UseB'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Use Bullet Successful
+          schema:
+            type: string
+        "401":
+          description: Error while using bullet
+          schema:
+            type: string
+      summary: Use Bullet
+      tags:
+      - Soldier
+  /soldier/usefuel:
+    post:
+      consumes:
+      - application/json
+      description: Record the use of fuel by a soldier
+      parameters:
+      - description: Use Fuel
+        in: body
+        name: UseF
+        required: true
+        schema:
+          $ref: '#/definitions/soldiers.UseF'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Use Fuel Successful
+          schema:
+            type: string
+        "401":
+          description: Error while using fuel
+          schema:
+            type: string
+      summary: Use Fuel
+      tags:
+      - Soldier
+  /technique/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new technique entry
+      parameters:
+      - description: Technique Request
+        in: body
+        name: TechniqueReq
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.TechniqueReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Create Successful
+          schema:
+            type: string
+        "400":
+          description: Error while creating
+          schema:
+            type: string
+      summary: Create Technique
+      tags:
+      - Technique
+  /technique/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an existing technique entry
+      parameters:
+      - description: Technique ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Delete Successful
+          schema:
+            type: string
+        "400":
+          description: Error while deleting
+          schema:
+            type: string
+      summary: Delete Technique
+      tags:
+      - Technique
+  /technique/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing technique entry by ID
+      parameters:
+      - description: Technique ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Technique'
+        "400":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Technique
+      tags:
+      - Technique
+  /technique/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all technique entries
+      parameters:
+      - in: query
+        name: model
+        type: string
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/militaries.AllTechnique'
+        "400":
+          description: Error while getting all
+          schema:
+            type: string
+      summary: Get All Techniques
+      tags:
+      - Technique
+  /technique/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update an existing technique entry
+      parameters:
+      - description: Technique ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Technique
+        in: body
+        name: Technique
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.Technique'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Update Successful
+          schema:
+            type: string
+        "400":
+          description: Error while updating
+          schema:
+            type: string
+      summary: Update Technique
+      tags:
+      - Technique
+swagger: "2.0"
