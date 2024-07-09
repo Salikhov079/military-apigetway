@@ -2,12 +2,12 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
+
 	pb "github.com/Salikhov079/military/genprotos/militaries"
 
 	"github.com/gin-gonic/gin"
 )
-
-
 
 // CreateFuel handles the creation of a new Fuel
 // @Summary      Create Fuel
@@ -115,15 +115,66 @@ func (h *Handler) GetFuel(ctx *gin.Context) {
 // @Failure      400    {string} string      "Error while getting all"
 // @Router       /fuel/getall [get]
 func (h *Handler) GetAllFuels(ctx *gin.Context) {
-	var req pb.FuelReq
-	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+	qu := ctx.Query("quantity")
+	ty := ctx.Query("type")
+	q, _ := strconv.Atoi(qu)
+	req := pb.FuelReq{Quantity: int32(q), Type: ty}
 	res, err := h.FuelService.GetAll(ctx, &req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	ctx.JSON(http.StatusOK, res)
+}
+
+// Add handles adding quantity to a Fuel
+// @Summary      Add Quantity
+// @Description  Add quantity to a Fuel
+// @Tags         Fuel
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Param        Fuel body pb.FuelAddSub true "Fuel data"
+// @Success      200    {object} pb.Void "Add Successful"
+// @Failure      500    {string} string  "Error while adding quantity"
+// @Router       /fuel/add [put]
+func (h *Handler) AddFuel(ctx *gin.Context) {
+	var Fuel pb.FuelAddSub
+	if err := ctx.ShouldBindJSON(&Fuel); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := h.FuelService.Add(ctx, &Fuel)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, "Updated")
+}
+
+// Sub handles subtracting quantity from a Fuel
+// @Summary      Subtract Quantity
+// @Description  Subtract quantity from a Fuel
+// @Tags         Fuel
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Param        Fuel body pb.FuelAddSub true "Fuel data"
+// @Success      200    {object} pb.Void "Subtract Successful"
+// @Failure      500    {string} string  "Error while subtracting quantity"
+// @Router       /fuel/sub [put]
+func (h *Handler) SubFuel(ctx *gin.Context) {
+	var Fuel pb.FuelAddSub
+	if err := ctx.ShouldBindJSON(&Fuel); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := h.FuelService.Sub(ctx, &Fuel)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, "Updated")
 }

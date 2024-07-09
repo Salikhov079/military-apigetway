@@ -34,6 +34,8 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	techniques.GET("/getbyid/:id", h.GetTechnique)
 	techniques.PUT("/update/:id", h.UpdateTechnique)
 	techniques.DELETE("/delete/:id", h.DeleteTechnique)
+	techniques.PUT("/add", h.AddTechnique)
+	techniques.PUT("/sub", h.SubTechnique)
 
 
 	fuel := r.Group("/fuel")
@@ -42,6 +44,8 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	fuel.GET("/getbyid/:id", h.GetFuel)
 	fuel.PUT("/update/:id", h.UpdateFuel)
 	fuel.DELETE("/delete/:id", h.DeleteFuel)
+	fuel.PUT("/add", h.AddFuel)
+	fuel.PUT("/sub", h.SubFuel)
 
 
 	soldiers := r.Group("/soldier")
@@ -54,6 +58,8 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	soldiers.POST("/usefuel", h.UseFuel)
 	
 	soldiers.GET("/dashbord", h.Dashbord)
+	soldiers.GET("/getallweaponstatistik", h.GetAllWeaponStatistik)
+	soldiers.GET("/getallfuelstatistik", h.GetAllFuelStatistik)
 
 	commanders := r.Group("/commander")
 	commanders.POST("/create", h.CreateCommander)
@@ -84,6 +90,8 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	bullets.GET("/getbyid/:id", h.GetBullet)
 	bullets.PUT("/update/:id", h.UpdateBullet)
 	bullets.DELETE("/delete/:id", h.DeleteBullet)
+	bullets.PUT("/add", h.AddBullet)
+	bullets.PUT("/sub", h.SubBullet)
 
 	r.POST("/ai/chat", h.CHatAi)
 	r.GET("/ai/gethistory/:id", h.GetHistory)

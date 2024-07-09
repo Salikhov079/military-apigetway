@@ -2,6 +2,8 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
+
 	pb "github.com/Salikhov079/military/genprotos/militaries"
 
 	"github.com/gin-gonic/gin"
@@ -115,15 +117,69 @@ func (h *Handler) GetBullet(ctx *gin.Context) {
 // @Failure      401    {string} string       "Error while getting all"
 // @Router       /bullet/getall [get]
 func (h *Handler) GetAllBullets(ctx *gin.Context) {
-	var req pb.BulletReq
-	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+	cl := ctx.Query("caliber")
+	qu := ctx.Query("quantity")
+	ty := ctx.Query("type")
+	c, _ := strconv.ParseFloat(cl, 32)
+	q, _ := strconv.Atoi(qu)
+	req := pb.BulletReq{Caliber: float32(c), Quantity: int32(q), Type: ty}
+
 	res, err := h.BulletService.GetAll(ctx, &req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	ctx.JSON(http.StatusOK, res)
+}
+
+// Add handles adding quantity to a Bullet
+// @Summary      Add Quantity
+// @Description  Add quantity to a Bullet
+// @Tags         Bullet
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Param        Bullet body pb.BulletAddSub true "Bullet data"
+// @Success      200    {object} pb.Void "Add Successful"
+// @Failure      500    {string} string  "Error while adding quantity"
+// @Router       /bullet/add [put]
+func (h *Handler) AddBullet(ctx *gin.Context) {
+	var Bullet pb.BulletAddSub
+	if err := ctx.ShouldBindJSON(&Bullet); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := h.BulletService.Add(ctx, &Bullet)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, "Updated")
+}
+
+// Sub handles subtracting quantity from a Bullet
+// @Summary      Subtract Quantity
+// @Description  Subtract quantity from a Bullet
+// @Tags         Bullet
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Param        Bullet body pb.BulletAddSub true "Bullet data"
+// @Success      200    {object} pb.Void "Subtract Successful"
+// @Failure      500    {string} string  "Error while subtracting quantity"
+// @Router       /bullet/sub [put]
+func (h *Handler) SubBullet(ctx *gin.Context) {
+	var Bullet pb.BulletAddSub
+	if err := ctx.ShouldBindJSON(&Bullet); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := h.BulletService.Sub(ctx, &Bullet)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, "Updated")
 }

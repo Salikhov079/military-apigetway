@@ -103,6 +103,51 @@ const docTemplate = `{
                 }
             }
         },
+        "/bullet/add": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Add quantity to a Bullet",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Bullet"
+                ],
+                "summary": "Add Quantity",
+                "parameters": [
+                    {
+                        "description": "Bullet data",
+                        "name": "Bullet",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/militaries.BulletAddSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Void"
+                        }
+                    },
+                    "500": {
+                        "description": "Error while adding quantity",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/bullet/create": {
             "post": {
                 "security": [
@@ -194,16 +239,14 @@ const docTemplate = `{
                 }
             }
         },
-<<<<<<< HEAD
-=======
-        "/bullet/get/{id}": {
+        "/bullet/getall": {
             "get": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Get an existing bullet by ID",
+                "description": "Get all bullets",
                 "consumes": [
                     "application/json"
                 ],
@@ -247,62 +290,13 @@ const docTemplate = `{
                 }
             }
         },
->>>>>>> bef80a0 (add auth)
-        "/bullet/getall": {
+        "/bullet/getbyid/{id}": {
             "get": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Get all bullets",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Bullet"
-                ],
-                "summary": "Get Bullet",
-                "parameters": [
-                    {
-                        "type": "number",
-                        "name": "caliber",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "quantity",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Bullet ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Bullet"
-                        }
-                    },
-                    "401": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/bullet/getbyid/{id}": {
-            "get": {
                 "description": "Get an existing bullet by ID",
                 "consumes": [
                     "application/json"
@@ -332,6 +326,51 @@ const docTemplate = `{
                     },
                     "401": {
                         "description": "Error while getting",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/bullet/sub": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Subtract quantity from a Bullet",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Bullet"
+                ],
+                "summary": "Subtract Quantity",
+                "parameters": [
+                    {
+                        "description": "Bullet data",
+                        "name": "Bullet",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/militaries.BulletAddSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subtract Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Void"
+                        }
+                    },
+                    "500": {
+                        "description": "Error while subtracting quantity",
                         "schema": {
                             "type": "string"
                         }
@@ -847,6 +886,51 @@ const docTemplate = `{
                 }
             }
         },
+        "/fuel/add": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Add quantity to a Fuel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Fuel"
+                ],
+                "summary": "Add Quantity",
+                "parameters": [
+                    {
+                        "description": "Fuel data",
+                        "name": "Fuel",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/militaries.FuelAddSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Void"
+                        }
+                    },
+                    "500": {
+                        "description": "Error while adding quantity",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/fuel/create": {
             "post": {
                 "security": [
@@ -935,16 +1019,14 @@ const docTemplate = `{
                 }
             }
         },
-<<<<<<< HEAD
-=======
-        "/fuel/get/{id}": {
+        "/fuel/getall": {
             "get": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Get an existing fuel entry by ID",
+                "description": "Get all fuel entries",
                 "consumes": [
                     "application/json"
                 ],
@@ -983,57 +1065,13 @@ const docTemplate = `{
                 }
             }
         },
->>>>>>> bef80a0 (add auth)
-        "/fuel/getall": {
+        "/fuel/getbyid/{id}": {
             "get": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Get all fuel entries",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Fuel"
-                ],
-                "summary": "Get Fuel",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "name": "quantity",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "Fuel ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Fuel"
-                        }
-                    },
-                    "400": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/fuel/getbyid/{id}": {
-            "get": {
                 "description": "Get an existing fuel entry by ID",
                 "consumes": [
                     "application/json"
@@ -1063,6 +1101,51 @@ const docTemplate = `{
                     },
                     "400": {
                         "description": "Error while getting",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/fuel/sub": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Subtract quantity from a Fuel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Fuel"
+                ],
+                "summary": "Subtract Quantity",
+                "parameters": [
+                    {
+                        "description": "Fuel data",
+                        "name": "Fuel",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/militaries.FuelAddSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subtract Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Void"
+                        }
+                    },
+                    "500": {
+                        "description": "Error while subtracting quantity",
                         "schema": {
                             "type": "string"
                         }
@@ -1412,37 +1495,14 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "name": "date_of_birth",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "email",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "end_date",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "group_id",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
+                        "description": "Join date of the soldier (format: YYYY-MM-DD)",
                         "name": "join_date",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "name": "name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "phone_number",
+                        "description": "End date of the soldier (format: YYYY-MM-DD)",
+                        "name": "end_date",
                         "in": "query"
                     }
                 ],
@@ -1599,6 +1659,126 @@ const docTemplate = `{
                 }
             }
         },
+        "/soldier/getallfuelstatistik": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all fuel statistics for soldiers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dashbord"
+                ],
+                "summary": "Get All Fuel Statistics",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Date in the format YYYY-MM-DD",
+                        "name": "date",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Soldier ID",
+                        "name": "soldier_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Successful",
+                        "schema": {
+                            "$ref": "#/definitions/soldiers.GetSoldierStatistikFuelRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameter",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/soldier/getallweaponstatistik": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all weapon statistics for soldiers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dashbord"
+                ],
+                "summary": "Get All Weapon Statistics",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Date in the format YYYY-MM-DD",
+                        "name": "date",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Soldier ID",
+                        "name": "soldier_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get All Successful",
+                        "schema": {
+                            "$ref": "#/definitions/soldiers.GetSoldierStatistikRes"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid query parameter",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/soldier/update/{id}": {
             "put": {
                 "security": [
@@ -1741,6 +1921,51 @@ const docTemplate = `{
                 }
             }
         },
+        "/technique/add": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Add quantity to a technique",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Technique"
+                ],
+                "summary": "Add Quantity",
+                "parameters": [
+                    {
+                        "description": "Technique data",
+                        "name": "technique",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/militaries.TechniqueAddSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Void"
+                        }
+                    },
+                    "500": {
+                        "description": "Error while adding quantity",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/technique/create": {
             "post": {
                 "security": [
@@ -1829,16 +2054,14 @@ const docTemplate = `{
                 }
             }
         },
-<<<<<<< HEAD
-=======
-        "/technique/get/{id}": {
+        "/technique/getall": {
             "get": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Get an existing technique entry by ID",
+                "description": "Get all technique entries",
                 "consumes": [
                     "application/json"
                 ],
@@ -1882,60 +2105,13 @@ const docTemplate = `{
                 }
             }
         },
->>>>>>> bef80a0 (add auth)
-        "/technique/getall": {
+        "/technique/getbyid/{id}": {
             "get": {
                 "security": [
                     {
                         "BearerAuth": []
                     }
                 ],
-                "description": "Get all technique entries",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Technique"
-                ],
-                "summary": "Get Technique",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "name": "model",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "name": "quantity",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "name": "type",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Technique"
-                        }
-                    },
-                    "400": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/technique/getbyid/{id}": {
-            "get": {
                 "description": "Get an existing technique entry by ID",
                 "consumes": [
                     "application/json"
@@ -1965,6 +2141,51 @@ const docTemplate = `{
                     },
                     "400": {
                         "description": "Error while getting",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/technique/sub": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Subtract quantity from a technique",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Technique"
+                ],
+                "summary": "Subtract Quantity",
+                "parameters": [
+                    {
+                        "description": "Technique data",
+                        "name": "technique",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/militaries.TechniqueAddSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Subtract Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Void"
+                        }
+                    },
+                    "500": {
+                        "description": "Error while subtracting quantity",
                         "schema": {
                             "type": "string"
                         }
@@ -2087,6 +2308,17 @@ const docTemplate = `{
                 }
             }
         },
+        "militaries.BulletAddSub": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
         "militaries.BulletReq": {
             "type": "object",
             "properties": {
@@ -2112,6 +2344,17 @@ const docTemplate = `{
                 },
                 "type": {
                     "type": "string"
+                }
+            }
+        },
+        "militaries.FuelAddSub": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
                 }
             }
         },
@@ -2143,6 +2386,17 @@ const docTemplate = `{
                 }
             }
         },
+        "militaries.TechniqueAddSub": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
         "militaries.TechniqueReq": {
             "type": "object",
             "properties": {
@@ -2156,6 +2410,9 @@ const docTemplate = `{
                     "type": "string"
                 }
             }
+        },
+        "militaries.Void": {
+            "type": "object"
         },
         "soldiers.AllCommanders": {
             "type": "object",
@@ -2289,6 +2546,28 @@ const docTemplate = `{
                 },
                 "name": {
                     "type": "string"
+                }
+            }
+        },
+        "soldiers.GetSoldierStatistikFuelRes": {
+            "type": "object",
+            "properties": {
+                "used_fuel": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/soldiers.UseF"
+                    }
+                }
+            }
+        },
+        "soldiers.GetSoldierStatistikRes": {
+            "type": "object",
+            "properties": {
+                "used_weapons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/soldiers.UseB"
+                    }
                 }
             }
         },

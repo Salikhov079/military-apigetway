@@ -2,11 +2,12 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
+
 	pb "github.com/Salikhov079/military/genprotos/militaries"
 
 	"github.com/gin-gonic/gin"
 )
-
 
 // CreateTechnique handles the creation of a new Technique
 // @Summary      Create Technique
@@ -114,15 +115,67 @@ func (h *Handler) GetTechnique(ctx *gin.Context) {
 // @Failure      400    {string} string          "Error while getting all"
 // @Router       /technique/getall [get]
 func (h *Handler) GetAllTechniques(ctx *gin.Context) {
-	var req pb.TechniqueReq
-	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+	mo := ctx.Query("model")
+	qu := ctx.Query("quantity")
+	ty := ctx.Query("type")
+	q, _ := strconv.Atoi(qu)
+	req := pb.TechniqueReq{Model: mo, Quantity: int32(q), Type: ty}
 	res, err := h.TechniqueService.GetAll(ctx, &req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 	ctx.JSON(http.StatusOK, res)
+}
+
+// Add handles adding quantity to a technique
+// @Summary      Add Quantity
+// @Description  Add quantity to a technique
+// @Tags         Technique
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Param        technique body pb.TechniqueAddSub true "Technique data"
+// @Success      200    {object} pb.Void "Add Successful"
+// @Failure      500    {string} string  "Error while adding quantity"
+// @Router       /technique/add [put]
+func (h *Handler) AddTechnique(ctx *gin.Context) {
+	var technique pb.TechniqueAddSub
+	if err := ctx.ShouldBindJSON(&technique); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := h.TechniqueService.Add(ctx, &technique)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, "Updated")
+}
+
+// Sub handles subtracting quantity from a technique
+// @Summary      Subtract Quantity
+// @Description  Subtract quantity from a technique
+// @Tags         Technique
+// @Accept       json
+// @Produce      json
+// @Security     BearerAuth
+// @Param        technique body pb.TechniqueAddSub true "Technique data"
+// @Success      200    {object} pb.Void "Subtract Successful"
+// @Failure      500    {string} string  "Error while subtracting quantity"
+// @Router       /technique/sub [post]
+func (h *Handler) SubTechnique(ctx *gin.Context) {
+	var technique pb.TechniqueAddSub
+	if err := ctx.ShouldBindJSON(&technique); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	_, err := h.TechniqueService.Sub(ctx, &technique)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	ctx.JSON(http.StatusOK, "Updated")
 }

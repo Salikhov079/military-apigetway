@@ -2,12 +2,11 @@ package handler
 
 import (
 	"net/http"
+
 	pb "github.com/Salikhov079/military/genprotos/soldiers"
 
 	"github.com/gin-gonic/gin"
 )
-
-
 
 // CreateCommander handles the creation of a new Commander
 // @Summary      Create Commander
@@ -115,11 +114,9 @@ func (h *Handler) GetCommander(ctx *gin.Context) {
 // @Failure      401    {string} string           "Error while getting all"
 // @Router       /commander/getall [get]
 func (h *Handler) GetAllCommanders(ctx *gin.Context) {
-	var req pb.CommanderReq
-	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+	email := ctx.Query("email")
+	name := ctx.Query("name")
+	req := pb.CommanderReq{Email: email, Name: name}
 	res, err := h.CommanderService.GetAll(ctx, &req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

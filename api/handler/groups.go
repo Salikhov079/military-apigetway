@@ -113,11 +113,8 @@ func (h *Handler) GetGroup(ctx *gin.Context) {
 // @Failure      401    {string} string       "Error while getting all"
 // @Router       /group/getall [get]
 func (h *Handler) GetAllGroups(ctx *gin.Context) {
-	var req pb.GroupReq
-	if err := ctx.ShouldBindQuery(&req); err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+	name := ctx.Query("name")
+	req := pb.GroupReq{Name: name}
 	res, err := h.GroupService.GetAll(ctx, &req)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})

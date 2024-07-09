@@ -39,6 +39,13 @@ definitions:
       type:
         type: string
     type: object
+  militaries.BulletAddSub:
+    properties:
+      id:
+        type: string
+      quantity:
+        type: integer
+    type: object
   militaries.BulletReq:
     properties:
       caliber:
@@ -56,6 +63,13 @@ definitions:
         type: integer
       type:
         type: string
+    type: object
+  militaries.FuelAddSub:
+    properties:
+      id:
+        type: string
+      quantity:
+        type: integer
     type: object
   militaries.FuelReq:
     properties:
@@ -75,6 +89,13 @@ definitions:
       type:
         type: string
     type: object
+  militaries.TechniqueAddSub:
+    properties:
+      id:
+        type: string
+      quantity:
+        type: integer
+    type: object
   militaries.TechniqueReq:
     properties:
       model:
@@ -83,6 +104,8 @@ definitions:
         type: integer
       type:
         type: string
+    type: object
+  militaries.Void:
     type: object
   soldiers.AllCommanders:
     properties:
@@ -170,6 +193,20 @@ definitions:
         type: string
       name:
         type: string
+    type: object
+  soldiers.GetSoldierStatistikFuelRes:
+    properties:
+      used_fuel:
+        items:
+          $ref: '#/definitions/soldiers.UseF'
+        type: array
+    type: object
+  soldiers.GetSoldierStatistikRes:
+    properties:
+      used_weapons:
+        items:
+          $ref: '#/definitions/soldiers.UseB'
+        type: array
     type: object
   soldiers.Group:
     properties:
@@ -289,6 +326,34 @@ paths:
       summary: GetHistory
       tags:
       - AI
+  /bullet/add:
+    put:
+      consumes:
+      - application/json
+      description: Add quantity to a Bullet
+      parameters:
+      - description: Bullet data
+        in: body
+        name: Bullet
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.BulletAddSub'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Add Successful
+          schema:
+            $ref: '#/definitions/militaries.Void'
+        "500":
+          description: Error while adding quantity
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add Quantity
+      tags:
+      - Bullet
   /bullet/create:
     post:
       consumes:
@@ -345,9 +410,38 @@ paths:
       summary: Delete Bullet
       tags:
       - Bullet
-<<<<<<< HEAD
-=======
-  /bullet/get/{id}:
+  /bullet/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all bullets
+      parameters:
+      - in: query
+        name: caliber
+        type: number
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/militaries.AllBullets'
+        "401":
+          description: Error while getting all
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get All Bullets
+      tags:
+      - Bullet
+  /bullet/getbyid/{id}:
     get:
       consumes:
       - application/json
@@ -371,59 +465,35 @@ paths:
             type: string
       security:
       - BearerAuth: []
-      summary: Get All Bullets
+      summary: Get Bullet
       tags:
       - Bullet
-  /bullet/getbyid/{id}:
->>>>>>> bef80a0 (add auth)
-  /bullet/getall:
-    get:
+  /bullet/sub:
+    put:
       consumes:
       - application/json
-      description: Get an existing bullet by ID
+      description: Subtract quantity from a Bullet
       parameters:
-      - description: Bullet ID
-        in: path
-        name: id
+      - description: Bullet data
+        in: body
+        name: Bullet
         required: true
-        type: string
+        schema:
+          $ref: '#/definitions/militaries.BulletAddSub'
       produces:
       - application/json
       responses:
         "200":
-          description: Get Successful
+          description: Subtract Successful
           schema:
-            $ref: '#/definitions/militaries.Bullet'
-        "401":
-          description: Error while getting
-          schema:
-            type: string
-      summary: Get Bullet
-      tags:
-      - Bullet
-  /bullet/getbyid/{id}:
-    get:
-      consumes:
-      - application/json
-      description: Get an existing bullet by ID
-      parameters:
-      - description: Bullet ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Get Successful
-          schema:
-            $ref: '#/definitions/militaries.Bullet'
-        "401":
-          description: Error while getting
+            $ref: '#/definitions/militaries.Void'
+        "500":
+          description: Error while subtracting quantity
           schema:
             type: string
-      summary: Get Bullet
+      security:
+      - BearerAuth: []
+      summary: Subtract Quantity
       tags:
       - Bullet
   /bullet/update/{id}:
@@ -743,6 +813,34 @@ paths:
       summary: Update Department
       tags:
       - Department
+  /fuel/add:
+    put:
+      consumes:
+      - application/json
+      description: Add quantity to a Fuel
+      parameters:
+      - description: Fuel data
+        in: body
+        name: Fuel
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.FuelAddSub'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Add Successful
+          schema:
+            $ref: '#/definitions/militaries.Void'
+        "500":
+          description: Error while adding quantity
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add Quantity
+      tags:
+      - Fuel
   /fuel/create:
     post:
       consumes:
@@ -798,9 +896,35 @@ paths:
       summary: Delete Fuel
       tags:
       - Fuel
-<<<<<<< HEAD
-=======
-  /fuel/get/{id}:
+  /fuel/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all fuel entries
+      parameters:
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/militaries.AllFuels'
+        "400":
+          description: Error while getting all
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get All Fuels
+      tags:
+      - Fuel
+  /fuel/getbyid/{id}:
     get:
       consumes:
       - application/json
@@ -824,59 +948,35 @@ paths:
             type: string
       security:
       - BearerAuth: []
-      summary: Get All Fuels
+      summary: Get Fuel
       tags:
       - Fuel
-  /fuel/getbyid/{id}:
->>>>>>> bef80a0 (add auth)
-  /fuel/getall:
-    get:
+  /fuel/sub:
+    put:
       consumes:
       - application/json
-      description: Get an existing fuel entry by ID
+      description: Subtract quantity from a Fuel
       parameters:
-      - description: Fuel ID
-        in: path
-        name: id
+      - description: Fuel data
+        in: body
+        name: Fuel
         required: true
-        type: string
+        schema:
+          $ref: '#/definitions/militaries.FuelAddSub'
       produces:
       - application/json
       responses:
         "200":
-          description: Get Successful
+          description: Subtract Successful
           schema:
-            $ref: '#/definitions/militaries.Fuel'
-        "400":
-          description: Error while getting
-          schema:
-            type: string
-      summary: Get Fuel
-      tags:
-      - Fuel
-  /fuel/getbyid/{id}:
-    get:
-      consumes:
-      - application/json
-      description: Get an existing fuel entry by ID
-      parameters:
-      - description: Fuel ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Get Successful
-          schema:
-            $ref: '#/definitions/militaries.Fuel'
-        "400":
-          description: Error while getting
+            $ref: '#/definitions/militaries.Void'
+        "500":
+          description: Error while subtracting quantity
           schema:
             type: string
-      summary: Get Fuel
+      security:
+      - BearerAuth: []
+      summary: Subtract Quantity
       tags:
       - Fuel
   /fuel/update/{id}:
@@ -1086,26 +1186,13 @@ paths:
       - application/json
       description: Get all Dashbord
       parameters:
-      - in: query
-        name: date_of_birth
-        type: string
-      - in: query
-        name: email
-        type: string
-      - in: query
-        name: end_date
-        type: string
-      - in: query
-        name: group_id
-        type: string
-      - in: query
+      - description: 'Join date of the soldier (format: YYYY-MM-DD)'
+        in: query
         name: join_date
         type: string
-      - in: query
-        name: name
-        type: string
-      - in: query
-        name: phone_number
+      - description: 'End date of the soldier (format: YYYY-MM-DD)'
+        in: query
+        name: end_date
         type: string
       produces:
       - application/json
@@ -1208,6 +1295,82 @@ paths:
       summary: Get All Soldiers
       tags:
       - Soldier
+  /soldier/getallfuelstatistik:
+    get:
+      consumes:
+      - application/json
+      description: Get all fuel statistics for soldiers
+      parameters:
+      - description: Date in the format YYYY-MM-DD
+        in: query
+        name: date
+        type: string
+      - description: Soldier ID
+        in: query
+        name: soldier_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.GetSoldierStatistikFuelRes'
+        "400":
+          description: Invalid query parameter
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get All Fuel Statistics
+      tags:
+      - Dashbord
+  /soldier/getallweaponstatistik:
+    get:
+      consumes:
+      - application/json
+      description: Get all weapon statistics for soldiers
+      parameters:
+      - description: Date in the format YYYY-MM-DD
+        in: query
+        name: date
+        type: string
+      - description: Soldier ID
+        in: query
+        name: soldier_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/soldiers.GetSoldierStatistikRes'
+        "400":
+          description: Invalid query parameter
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get All Weapon Statistics
+      tags:
+      - Dashbord
   /soldier/update/{id}:
     put:
       consumes:
@@ -1297,6 +1460,34 @@ paths:
       summary: Use Fuel
       tags:
       - Soldier
+  /technique/add:
+    put:
+      consumes:
+      - application/json
+      description: Add quantity to a technique
+      parameters:
+      - description: Technique data
+        in: body
+        name: technique
+        required: true
+        schema:
+          $ref: '#/definitions/militaries.TechniqueAddSub'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Add Successful
+          schema:
+            $ref: '#/definitions/militaries.Void'
+        "500":
+          description: Error while adding quantity
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Add Quantity
+      tags:
+      - Technique
   /technique/create:
     post:
       consumes:
@@ -1352,9 +1543,38 @@ paths:
       summary: Delete Technique
       tags:
       - Technique
-<<<<<<< HEAD
-=======
-  /technique/get/{id}:
+  /technique/getall:
+    get:
+      consumes:
+      - application/json
+      description: Get all technique entries
+      parameters:
+      - in: query
+        name: model
+        type: string
+      - in: query
+        name: quantity
+        type: integer
+      - in: query
+        name: type
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get All Successful
+          schema:
+            $ref: '#/definitions/militaries.AllTechnique'
+        "400":
+          description: Error while getting all
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get All Techniques
+      tags:
+      - Technique
+  /technique/getbyid/{id}:
     get:
       consumes:
       - application/json
@@ -1378,59 +1598,35 @@ paths:
             type: string
       security:
       - BearerAuth: []
-      summary: Get All Techniques
+      summary: Get Technique
       tags:
       - Technique
-  /technique/getbyid/{id}:
->>>>>>> bef80a0 (add auth)
-  /technique/getall:
-    get:
+  /technique/sub:
+    post:
       consumes:
       - application/json
-      description: Get an existing technique entry by ID
+      description: Subtract quantity from a technique
       parameters:
-      - description: Technique ID
-        in: path
-        name: id
+      - description: Technique data
+        in: body
+        name: technique
         required: true
-        type: string
+        schema:
+          $ref: '#/definitions/militaries.TechniqueAddSub'
       produces:
       - application/json
       responses:
         "200":
-          description: Get Successful
+          description: Subtract Successful
           schema:
-            $ref: '#/definitions/militaries.Technique'
-        "400":
-          description: Error while getting
-          schema:
-            type: string
-      summary: Get Technique
-      tags:
-      - Technique
-  /technique/getbyid/{id}:
-    get:
-      consumes:
-      - application/json
-      description: Get an existing technique entry by ID
-      parameters:
-      - description: Technique ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Get Successful
-          schema:
-            $ref: '#/definitions/militaries.Technique'
-        "400":
-          description: Error while getting
+            $ref: '#/definitions/militaries.Void'
+        "500":
+          description: Error while subtracting quantity
           schema:
             type: string
-      summary: Get Technique
+      security:
+      - BearerAuth: []
+      summary: Subtract Quantity
       tags:
       - Technique
   /technique/update/{id}:
