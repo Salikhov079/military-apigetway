@@ -371,39 +371,34 @@ paths:
             type: string
       security:
       - BearerAuth: []
-      summary: Get Bullet
+      summary: Get All Bullets
       tags:
       - Bullet
+  /bullet/getbyid/{id}:
 >>>>>>> bef80a0 (add auth)
   /bullet/getall:
     get:
       consumes:
       - application/json
-      description: Get all bullets
+      description: Get an existing bullet by ID
       parameters:
-      - in: query
-        name: caliber
-        type: number
-      - in: query
-        name: quantity
-        type: integer
-      - in: query
-        name: type
+      - description: Bullet ID
+        in: path
+        name: id
+        required: true
         type: string
       produces:
       - application/json
       responses:
         "200":
-          description: Get All Successful
+          description: Get Successful
           schema:
-            $ref: '#/definitions/militaries.AllBullets'
+            $ref: '#/definitions/militaries.Bullet'
         "401":
-          description: Error while getting all
+          description: Error while getting
           schema:
             type: string
-      security:
-      - BearerAuth: []
-      summary: Get All Bullets
+      summary: Get Bullet
       tags:
       - Bullet
   /bullet/getbyid/{id}:
@@ -829,36 +824,34 @@ paths:
             type: string
       security:
       - BearerAuth: []
-      summary: Get Fuel
+      summary: Get All Fuels
       tags:
       - Fuel
+  /fuel/getbyid/{id}:
 >>>>>>> bef80a0 (add auth)
   /fuel/getall:
     get:
       consumes:
       - application/json
-      description: Get all fuel entries
+      description: Get an existing fuel entry by ID
       parameters:
-      - in: query
-        name: quantity
-        type: integer
-      - in: query
-        name: type
+      - description: Fuel ID
+        in: path
+        name: id
+        required: true
         type: string
       produces:
       - application/json
       responses:
         "200":
-          description: Get All Successful
+          description: Get Successful
           schema:
-            $ref: '#/definitions/militaries.AllFuels'
+            $ref: '#/definitions/militaries.Fuel'
         "400":
-          description: Error while getting all
+          description: Error while getting
           schema:
             type: string
-      security:
-      - BearerAuth: []
-      summary: Get All Fuels
+      summary: Get Fuel
       tags:
       - Fuel
   /fuel/getbyid/{id}:
@@ -1385,39 +1378,34 @@ paths:
             type: string
       security:
       - BearerAuth: []
-      summary: Get Technique
+      summary: Get All Techniques
       tags:
       - Technique
+  /technique/getbyid/{id}:
 >>>>>>> bef80a0 (add auth)
   /technique/getall:
     get:
       consumes:
       - application/json
-      description: Get all technique entries
+      description: Get an existing technique entry by ID
       parameters:
-      - in: query
-        name: model
-        type: string
-      - in: query
-        name: quantity
-        type: integer
-      - in: query
-        name: type
+      - description: Technique ID
+        in: path
+        name: id
+        required: true
         type: string
       produces:
       - application/json
       responses:
         "200":
-          description: Get All Successful
+          description: Get Successful
           schema:
-            $ref: '#/definitions/militaries.AllTechnique'
+            $ref: '#/definitions/militaries.Technique'
         "400":
-          description: Error while getting all
+          description: Error while getting
           schema:
             type: string
-      security:
-      - BearerAuth: []
-      summary: Get All Techniques
+      summary: Get Technique
       tags:
       - Technique
   /technique/getbyid/{id}:

@@ -213,50 +213,6 @@ const docTemplate = `{
                 "tags": [
                     "Bullet"
                 ],
-                "summary": "Get Bullet",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Bullet ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Bullet"
-                        }
-                    },
-                    "401": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
->>>>>>> bef80a0 (add auth)
-        "/bullet/getall": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Get all bullets",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Bullet"
-                ],
                 "summary": "Get All Bullets",
                 "parameters": [
                     {
@@ -284,6 +240,60 @@ const docTemplate = `{
                     },
                     "401": {
                         "description": "Error while getting all",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+>>>>>>> bef80a0 (add auth)
+        "/bullet/getall": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all bullets",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Bullet"
+                ],
+                "summary": "Get Bullet",
+                "parameters": [
+                    {
+                        "type": "number",
+                        "name": "caliber",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "quantity",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bullet ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Bullet"
+                        }
+                    },
+                    "401": {
+                        "description": "Error while getting",
                         "schema": {
                             "type": "string"
                         }
@@ -944,25 +954,28 @@ const docTemplate = `{
                 "tags": [
                     "Fuel"
                 ],
-                "summary": "Get Fuel",
+                "summary": "Get All Fuels",
                 "parameters": [
                     {
+                        "type": "integer",
+                        "name": "quantity",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
-                        "description": "Fuel ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
+                        "name": "type",
+                        "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get Successful",
+                        "description": "Get All Successful",
                         "schema": {
-                            "$ref": "#/definitions/militaries.Fuel"
+                            "$ref": "#/definitions/militaries.AllFuels"
                         }
                     },
                     "400": {
-                        "description": "Error while getting",
+                        "description": "Error while getting all",
                         "schema": {
                             "type": "string"
                         }
@@ -988,7 +1001,7 @@ const docTemplate = `{
                 "tags": [
                     "Fuel"
                 ],
-                "summary": "Get All Fuels",
+                "summary": "Get Fuel",
                 "parameters": [
                     {
                         "type": "integer",
@@ -997,19 +1010,21 @@ const docTemplate = `{
                     },
                     {
                         "type": "string",
-                        "name": "type",
-                        "in": "query"
+                        "description": "Fuel ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get All Successful",
+                        "description": "Get Successful",
                         "schema": {
-                            "$ref": "#/definitions/militaries.AllFuels"
+                            "$ref": "#/definitions/militaries.Fuel"
                         }
                     },
                     "400": {
-                        "description": "Error while getting all",
+                        "description": "Error while getting",
                         "schema": {
                             "type": "string"
                         }
@@ -1833,50 +1848,6 @@ const docTemplate = `{
                 "tags": [
                     "Technique"
                 ],
-                "summary": "Get Technique",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Technique ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Technique"
-                        }
-                    },
-                    "400": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
->>>>>>> bef80a0 (add auth)
-        "/technique/getall": {
-            "get": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Get all technique entries",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Technique"
-                ],
                 "summary": "Get All Techniques",
                 "parameters": [
                     {
@@ -1904,6 +1875,58 @@ const docTemplate = `{
                     },
                     "400": {
                         "description": "Error while getting all",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+>>>>>>> bef80a0 (add auth)
+        "/technique/getall": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get all technique entries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Technique"
+                ],
+                "summary": "Get Technique",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "model",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "quantity",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "type",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Technique"
+                        }
+                    },
+                    "400": {
+                        "description": "Error while getting",
                         "schema": {
                             "type": "string"
                         }
