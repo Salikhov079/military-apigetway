@@ -87,7 +87,7 @@ func (h *Handler) DeleteTechnique(ctx *gin.Context) {
 // @Param        id    path     string       true  "Technique ID"
 // @Success      200   {object} pb.Technique "Get Successful"
 // @Failure      400   {string} string       "Error while getting"
-// @Router       /technique/get/{id} [get]
+// @Router       /technique/getbyid/{id} [get]
 func (h *Handler) GetTechnique(ctx *gin.Context) {
 	id := pb.ById{Id: ctx.Param("id")}
 	res, err := h.TechniqueService.Get(ctx, &id)

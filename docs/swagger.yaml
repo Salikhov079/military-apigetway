@@ -332,31 +332,6 @@ paths:
       summary: Delete Bullet
       tags:
       - Bullet
-  /bullet/get/{id}:
-    get:
-      consumes:
-      - application/json
-      description: Get an existing bullet by ID
-      parameters:
-      - description: Bullet ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Get Successful
-          schema:
-            $ref: '#/definitions/militaries.Bullet'
-        "401":
-          description: Error while getting
-          schema:
-            type: string
-      summary: Get Bullet
-      tags:
-      - Bullet
   /bullet/getall:
     get:
       consumes:
@@ -384,6 +359,31 @@ paths:
           schema:
             type: string
       summary: Get All Bullets
+      tags:
+      - Bullet
+  /bullet/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing bullet by ID
+      parameters:
+      - description: Bullet ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Bullet'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Bullet
       tags:
       - Bullet
   /bullet/update/{id}:
@@ -731,31 +731,6 @@ paths:
       summary: Delete Fuel
       tags:
       - Fuel
-  /fuel/get/{id}:
-    get:
-      consumes:
-      - application/json
-      description: Get an existing fuel entry by ID
-      parameters:
-      - description: Fuel ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Get Successful
-          schema:
-            $ref: '#/definitions/militaries.Fuel'
-        "400":
-          description: Error while getting
-          schema:
-            type: string
-      summary: Get Fuel
-      tags:
-      - Fuel
   /fuel/getall:
     get:
       consumes:
@@ -780,6 +755,31 @@ paths:
           schema:
             type: string
       summary: Get All Fuels
+      tags:
+      - Fuel
+  /fuel/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing fuel entry by ID
+      parameters:
+      - description: Fuel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Fuel'
+        "400":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Fuel
       tags:
       - Fuel
   /fuel/update/{id}:
@@ -1223,31 +1223,6 @@ paths:
       summary: Delete Technique
       tags:
       - Technique
-  /technique/get/{id}:
-    get:
-      consumes:
-      - application/json
-      description: Get an existing technique entry by ID
-      parameters:
-      - description: Technique ID
-        in: path
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Get Successful
-          schema:
-            $ref: '#/definitions/militaries.Technique'
-        "400":
-          description: Error while getting
-          schema:
-            type: string
-      summary: Get Technique
-      tags:
-      - Technique
   /technique/getall:
     get:
       consumes:
@@ -1275,6 +1250,31 @@ paths:
           schema:
             type: string
       summary: Get All Techniques
+      tags:
+      - Technique
+  /technique/getbyid/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing technique entry by ID
+      parameters:
+      - description: Technique ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Technique'
+        "400":
+          description: Error while getting
+          schema:
+            type: string
+      summary: Get Technique
       tags:
       - Technique
   /technique/update/{id}:

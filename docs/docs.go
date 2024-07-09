@@ -171,44 +171,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/bullet/get/{id}": {
-            "get": {
-                "description": "Get an existing bullet by ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Bullet"
-                ],
-                "summary": "Get Bullet",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Bullet ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Bullet"
-                        }
-                    },
-                    "401": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/bullet/getall": {
             "get": {
                 "description": "Get all bullets",
@@ -248,6 +210,44 @@ const docTemplate = `{
                     },
                     "401": {
                         "description": "Error while getting all",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/bullet/getbyid/{id}": {
+            "get": {
+                "description": "Get an existing bullet by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Bullet"
+                ],
+                "summary": "Get Bullet",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bullet ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Bullet"
+                        }
+                    },
+                    "401": {
+                        "description": "Error while getting",
                         "schema": {
                             "type": "string"
                         }
@@ -783,44 +783,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/fuel/get/{id}": {
-            "get": {
-                "description": "Get an existing fuel entry by ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Fuel"
-                ],
-                "summary": "Get Fuel",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Fuel ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Fuel"
-                        }
-                    },
-                    "400": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/fuel/getall": {
             "get": {
                 "description": "Get all fuel entries",
@@ -855,6 +817,44 @@ const docTemplate = `{
                     },
                     "400": {
                         "description": "Error while getting all",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/fuel/getbyid/{id}": {
+            "get": {
+                "description": "Get an existing fuel entry by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Fuel"
+                ],
+                "summary": "Get Fuel",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Fuel ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Fuel"
+                        }
+                    },
+                    "400": {
+                        "description": "Error while getting",
                         "schema": {
                             "type": "string"
                         }
@@ -1541,44 +1541,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/technique/get/{id}": {
-            "get": {
-                "description": "Get an existing technique entry by ID",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Technique"
-                ],
-                "summary": "Get Technique",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Technique ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Get Successful",
-                        "schema": {
-                            "$ref": "#/definitions/militaries.Technique"
-                        }
-                    },
-                    "400": {
-                        "description": "Error while getting",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
         "/technique/getall": {
             "get": {
                 "description": "Get all technique entries",
@@ -1618,6 +1580,44 @@ const docTemplate = `{
                     },
                     "400": {
                         "description": "Error while getting all",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/technique/getbyid/{id}": {
+            "get": {
+                "description": "Get an existing technique entry by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Technique"
+                ],
+                "summary": "Get Technique",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Technique ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Successful",
+                        "schema": {
+                            "$ref": "#/definitions/militaries.Technique"
+                        }
+                    },
+                    "400": {
+                        "description": "Error while getting",
                         "schema": {
                             "type": "string"
                         }

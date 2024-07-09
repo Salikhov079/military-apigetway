@@ -88,7 +88,7 @@ func (h *Handler) DeleteFuel(ctx *gin.Context) {
 // @Param        id    path     string    true  "Fuel ID"
 // @Success      200   {object} pb.Fuel   "Get Successful"
 // @Failure      400   {string} string    "Error while getting"
-// @Router       /fuel/get/{id} [get]
+// @Router       /fuel/getbyid/{id} [get]
 func (h *Handler) GetFuel(ctx *gin.Context) {
 	id := pb.ById{Id: ctx.Param("id")}
 	res, err := h.FuelService.Get(ctx, &id)

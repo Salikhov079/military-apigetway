@@ -86,7 +86,7 @@ func (h *Handler) DeleteBullet(ctx *gin.Context) {
 // @Param        id      path    string     true  "Bullet ID"
 // @Success      200     {object} pb.Bullet "Get Successful"
 // @Failure      401     {string} string    "Error while getting"
-// @Router       /bullet/get/{id} [get]
+// @Router       /bullet/getbyid/{id} [get]
 func (h *Handler) GetBullet(ctx *gin.Context) {
 	id := pb.ById{Id: ctx.Param("id")}
 	res, err := h.BulletService.Get(ctx, &id)
