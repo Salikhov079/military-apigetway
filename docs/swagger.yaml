@@ -1,3 +1,4 @@
+basePath: /
 definitions:
   ai.AiCHat:
     properties:
@@ -227,8 +228,11 @@ definitions:
       soldier_id:
         type: string
     type: object
+host: localhost:8080
 info:
   contact: {}
+  description: Millitary service
+  version: "1.0"
 paths:
   /ai/chat:
     post:
@@ -253,6 +257,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: CHAT
       tags:
       - AI
@@ -278,6 +284,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: GetHistory
       tags:
       - AI
@@ -304,6 +312,9 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
+      - BearerAuth: []
       summary: Create Bullet
       tags:
       - Bullet
@@ -329,9 +340,41 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Bullet
       tags:
       - Bullet
+<<<<<<< HEAD
+=======
+  /bullet/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing bullet by ID
+      parameters:
+      - description: Bullet ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Bullet'
+        "401":
+          description: Error while getting
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get Bullet
+      tags:
+      - Bullet
+>>>>>>> bef80a0 (add auth)
   /bullet/getall:
     get:
       consumes:
@@ -358,6 +401,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Bullets
       tags:
       - Bullet
@@ -414,6 +459,9 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
+      - BearerAuth: []
       summary: Update Bullet
       tags:
       - Bullet
@@ -440,6 +488,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Create Commander
       tags:
       - Commander
@@ -465,6 +515,8 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Commander
       tags:
       - Commander
@@ -490,6 +542,8 @@ paths:
           description: Error while getting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get Commander
       tags:
       - Commander
@@ -516,6 +570,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Commanders
       tags:
       - Commander
@@ -547,6 +603,8 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Update Commander
       tags:
       - Commander
@@ -573,6 +631,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Create Department
       tags:
       - Department
@@ -598,6 +658,8 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Department
       tags:
       - Department
@@ -623,6 +685,8 @@ paths:
           description: Error while getting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get Department
       tags:
       - Department
@@ -646,6 +710,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Departments
       tags:
       - Department
@@ -677,6 +743,8 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Update Department
       tags:
       - Department
@@ -703,6 +771,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Create Fuel
       tags:
       - Fuel
@@ -728,9 +798,41 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Fuel
       tags:
       - Fuel
+<<<<<<< HEAD
+=======
+  /fuel/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing fuel entry by ID
+      parameters:
+      - description: Fuel ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Fuel'
+        "400":
+          description: Error while getting
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get Fuel
+      tags:
+      - Fuel
+>>>>>>> bef80a0 (add auth)
   /fuel/getall:
     get:
       consumes:
@@ -754,6 +856,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Fuels
       tags:
       - Fuel
@@ -810,6 +914,8 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Update Fuel
       tags:
       - Fuel
@@ -836,6 +942,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Create Group
       tags:
       - Group
@@ -861,6 +969,8 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Group
       tags:
       - Group
@@ -886,6 +996,8 @@ paths:
           description: Error while getting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get Group
       tags:
       - Group
@@ -909,6 +1021,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Groups
       tags:
       - Group
@@ -940,6 +1054,8 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Update Group
       tags:
       - Group
@@ -966,6 +1082,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Create Soldier
       tags:
       - Soldier
@@ -1007,6 +1125,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Dashbord
       tags:
       - Dashbord
@@ -1032,6 +1152,8 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Soldier
       tags:
       - Soldier
@@ -1057,6 +1179,8 @@ paths:
           description: Error while getting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get Soldier
       tags:
       - Soldier
@@ -1086,6 +1210,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Soldiers
       tags:
       - Soldier
@@ -1117,6 +1243,8 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Update Soldier
       tags:
       - Soldier
@@ -1143,6 +1271,8 @@ paths:
           description: Error while using bullet
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Use Bullet
       tags:
       - Soldier
@@ -1169,6 +1299,8 @@ paths:
           description: Error while using fuel
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Use Fuel
       tags:
       - Soldier
@@ -1195,6 +1327,8 @@ paths:
           description: Error while creating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Create Technique
       tags:
       - Technique
@@ -1220,9 +1354,41 @@ paths:
           description: Error while deleting
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Delete Technique
       tags:
       - Technique
+<<<<<<< HEAD
+=======
+  /technique/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an existing technique entry by ID
+      parameters:
+      - description: Technique ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Get Successful
+          schema:
+            $ref: '#/definitions/militaries.Technique'
+        "400":
+          description: Error while getting
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get Technique
+      tags:
+      - Technique
+>>>>>>> bef80a0 (add auth)
   /technique/getall:
     get:
       consumes:
@@ -1249,6 +1415,8 @@ paths:
           description: Error while getting all
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Get All Techniques
       tags:
       - Technique
@@ -1305,7 +1473,14 @@ paths:
           description: Error while updating
           schema:
             type: string
+      security:
+      - BearerAuth: []
       summary: Update Technique
       tags:
       - Technique
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authourization
+    type: apiKey
 swagger: "2.0"

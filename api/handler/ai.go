@@ -13,6 +13,7 @@ import (
 // @Tags         AI
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        BulletReq  body     pb.AiCHat  true  "Bullet Request"
 // @Success      200        {string} pb.AiCHat       
 // @Failure      401        {string} string        "Error while creating"
@@ -38,6 +39,7 @@ func (h *Handler) CHatAi(ctx *gin.Context) {
 // @Tags         AI
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id      path    string     true  "User ID"
 // @Success      200        {string} pb.GetHistoryResponse       
 // @Failure      401        {string} string        "Error while creating"

@@ -15,6 +15,7 @@ import (
 // @Tags         Department
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        Department  body     pb.CreateDeportment  true  "Department"
 // @Success      200         {string} string         "Create Successful"
 // @Failure      401         {string} string         "Error while creating"
@@ -39,6 +40,7 @@ func (h *Handler) CreateDepartment(ctx *gin.Context) {
 // @Tags         Department
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id         path     string         true  "Department ID"
 // @Param        Department body     pb.Department  true  "Department"
 // @Success      200        {string} string         "Update Successful"
@@ -65,6 +67,7 @@ func (h *Handler) UpdateDepartment(ctx *gin.Context) {
 // @Tags         Department
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id     path     string   true  "Department ID"
 // @Success      200    {string} string  "Delete Successful"
 // @Failure      401    {string} string  "Error while deleting"
@@ -85,6 +88,7 @@ func (h *Handler) DeleteDepartment(ctx *gin.Context) {
 // @Tags         Department
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id     path     string      true  "Department ID"
 // @Success      200    {object} pb.Department "Get Successful"
 // @Failure      401    {string} string       "Error while getting"
@@ -105,6 +109,7 @@ func (h *Handler) GetDepartment(ctx *gin.Context) {
 // @Tags         Department
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.GetAllDepartmentFilter  true  "Query parameter"
 // @Success      200    {object} pb.AllDepartments "Get All Successful"
 // @Failure      401    {string} string           "Error while getting all"

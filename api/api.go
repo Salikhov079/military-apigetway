@@ -2,21 +2,32 @@ package api
 
 import (
 	"github.com/Salikhov079/military/api/handler"
+	"github.com/Salikhov079/military/api/middleware"
 	_ "github.com/Salikhov079/military/docs"
 
 	"github.com/gin-gonic/gin"
 	files "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
+// @tite Millitary service
+// @version 1.0
+// @description Millitary service
+// @host localhost:8080
+// @BasePath /
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authourization
 
 // NewGin sets up a new Gin router with Swagger API endpoints.
 func NewGin(h *handler.Handler) *gin.Engine {
-	r := gin.Default()
 
-	// Swagger API documentation
+
+	r := gin.Default()
+	r.Use(middleware.MiddleWare())
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(files.Handler))
 
-	// Techniques API
+
 	techniques := r.Group("/technique")
 	techniques.POST("/create", h.CreateTechnique)
 	techniques.GET("/getall", h.GetAllTechniques)
@@ -24,7 +35,7 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	techniques.PUT("/update/:id", h.UpdateTechnique)
 	techniques.DELETE("/delete/:id", h.DeleteTechnique)
 
-	// Fuel API
+
 	fuel := r.Group("/fuel")
 	fuel.POST("/create", h.CreateFuel)
 	fuel.GET("/getall", h.GetAllFuels)
@@ -32,7 +43,7 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	fuel.PUT("/update/:id", h.UpdateFuel)
 	fuel.DELETE("/delete/:id", h.DeleteFuel)
 
-	// Soldiers API
+
 	soldiers := r.Group("/soldier")
 	soldiers.POST("/create", h.CreateSoldier)
 	soldiers.GET("/getall", h.GetAllSoldiers)
@@ -43,7 +54,7 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	soldiers.POST("/usefuel", h.UseFuel)
 	
 	soldiers.GET("/dashbord", h.Dashbord)
-	// Commanders API
+
 	commanders := r.Group("/commander")
 	commanders.POST("/create", h.CreateCommander)
 	commanders.GET("/getall", h.GetAllCommanders)
@@ -51,7 +62,7 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	commanders.PUT("/update/:id", h.UpdateCommander)
 	commanders.DELETE("/delete/:id", h.DeleteCommander)
 
-	// Departments API
+
 	departments := r.Group("/department")
 	departments.POST("/create", h.CreateDepartment)
 	departments.GET("/getall", h.GetAllDepartments)
@@ -59,7 +70,6 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	departments.PUT("/update/:id", h.UpdateDepartment)
 	departments.DELETE("/delete/:id", h.DeleteDepartment)
 
-	// Groups API
 	groups := r.Group("/group")
 	groups.POST("/create", h.CreateGroup)
 	groups.GET("/getall", h.GetAllGroups)
@@ -67,7 +77,7 @@ func NewGin(h *handler.Handler) *gin.Engine {
 	groups.PUT("/update/:id", h.UpdateGroup)
 	groups.DELETE("/delete/:id", h.DeleteGroup)
 
-	// Bullets API
+	
 	bullets := r.Group("/bullet")
 	bullets.POST("/create", h.CreateBullet)
 	bullets.GET("/getall", h.GetAllBullets)

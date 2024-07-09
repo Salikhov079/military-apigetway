@@ -13,6 +13,8 @@ import (
 // @Tags         Bullet
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
+// @Security  		BearerAuth
 // @Param        BulletReq  body     pb.BulletReq  true  "Bullet Request"
 // @Success      200        {string} string        "Create Successful"
 // @Failure      401        {string} string        "Error while creating"
@@ -37,6 +39,8 @@ func (h *Handler) CreateBullet(ctx *gin.Context) {
 // @Tags         Bullet
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
+// @Security  		BearerAuth
 // @Param        id      path    string   true  "Bullet ID"
 // @Param        Bullet  body    pb.Bullet  true  "Bullet"
 // @Success      200     {string} string  "Update Successful"
@@ -63,6 +67,7 @@ func (h *Handler) UpdateBullet(ctx *gin.Context) {
 // @Tags         Bullet
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id      path    string   true  "Bullet ID"
 // @Success      200     {string} string  "Delete Successful"
 // @Failure      401     {string} string  "Error while deleting"
@@ -83,6 +88,7 @@ func (h *Handler) DeleteBullet(ctx *gin.Context) {
 // @Tags         Bullet
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id      path    string     true  "Bullet ID"
 // @Success      200     {object} pb.Bullet "Get Successful"
 // @Failure      401     {string} string    "Error while getting"
@@ -103,6 +109,7 @@ func (h *Handler) GetBullet(ctx *gin.Context) {
 // @Tags         Bullet
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query   pb.BulletReq  true  "Query parameter"
 // @Success      200    {object} pb.AllBullets "Get All Successful"
 // @Failure      401    {string} string       "Error while getting all"
