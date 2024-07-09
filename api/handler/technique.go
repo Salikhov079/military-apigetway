@@ -14,6 +14,7 @@ import (
 // @Tags         Technique
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        TechniqueReq  body     pb.TechniqueReq  true  "Technique Request"
 // @Success      200           {string} string           "Create Successful"
 // @Failure      400           {string} string           "Error while creating"
@@ -38,6 +39,7 @@ func (h *Handler) CreateTechnique(ctx *gin.Context) {
 // @Tags         Technique
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id         path     string       true  "Technique ID"
 // @Param        Technique  body     pb.Technique true  "Technique"
 // @Success      200        {string} string       "Update Successful"
@@ -64,6 +66,7 @@ func (h *Handler) UpdateTechnique(ctx *gin.Context) {
 // @Tags         Technique
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id    path     string    true  "Technique ID"
 // @Success      200   {string} string    "Delete Successful"
 // @Failure      400   {string} string    "Error while deleting"
@@ -84,6 +87,7 @@ func (h *Handler) DeleteTechnique(ctx *gin.Context) {
 // @Tags         Technique
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id    path     string       true  "Technique ID"
 // @Success      200   {object} pb.Technique "Get Successful"
 // @Failure      400   {string} string       "Error while getting"
@@ -104,6 +108,7 @@ func (h *Handler) GetTechnique(ctx *gin.Context) {
 // @Tags         Technique
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.TechniqueReq true  "Query parameter"
 // @Success      200    {object} pb.AllTechnique "Get All Successful"
 // @Failure      400    {string} string          "Error while getting all"

@@ -14,6 +14,7 @@ import (
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        SoldierReq  body     pb.CreateSoldier  true  "Soldier Request"
 // @Success      200         {string} string         "Create Successful"
 // @Failure      401         {string} string         "Error while creating"
@@ -38,6 +39,7 @@ func (h *Handler) CreateSoldier(ctx *gin.Context) {
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id       path     string     true  "Soldier ID"
 // @Param        Soldier  body     pb.Soldier true  "Soldier"
 // @Success      200      {string} string     "Update Successful"
@@ -64,6 +66,7 @@ func (h *Handler) UpdateSoldier(ctx *gin.Context) {
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id     path     string   true  "Soldier ID"
 // @Success      200    {string} string  "Delete Successful"
 // @Failure      401    {string} string  "Error while deleting"
@@ -84,6 +87,7 @@ func (h *Handler) DeleteSoldier(ctx *gin.Context) {
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id     path     string     true  "Soldier ID"
 // @Success      200    {object} pb.Soldier "Get Successful"
 // @Failure      401    {string} string     "Error while getting"
@@ -104,6 +108,7 @@ func (h *Handler) GetSoldier(ctx *gin.Context) {
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.GetAllSoldierFilter  true  "Query parameter"
 // @Success      200    {object} pb.AllSoldiers "Get All Successful"
 // @Failure      401    {string} string         "Error while getting all"
@@ -128,6 +133,7 @@ func (h *Handler) GetAllSoldiers(ctx *gin.Context) {
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        UseB  body     pb.UseB  true  "Use Bullet"
 // @Success      200   {string} string   "Use Bullet Successful"
 // @Failure      401   {string} string   "Error while using bullet"
@@ -152,6 +158,7 @@ func (h *Handler) UseBullet(ctx *gin.Context) {
 // @Tags         Soldier
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        UseF  body     pb.UseF  true  "Use Fuel"
 // @Success      200   {string} string   "Use Fuel Successful"
 // @Failure      401   {string} string   "Error while using fuel"
@@ -178,6 +185,7 @@ func (h *Handler) UseFuel(ctx *gin.Context) {
 // @Tags         Dashbord
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.SoldierReq  true  "Query parameter"
 // @Success      200    {object} pb.AllSoldiers "Get All Successful"
 // @Failure      401    {string} string         "Error while getting all"

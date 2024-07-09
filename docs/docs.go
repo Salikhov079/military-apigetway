@@ -17,6 +17,11 @@ const docTemplate = `{
     "paths": {
         "/ai/chat": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "CHat with AI",
                 "consumes": [
                     "application/json"
@@ -57,6 +62,11 @@ const docTemplate = `{
         },
         "/ai/gethistory/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "CHat with AI",
                 "consumes": [
                     "application/json"
@@ -95,6 +105,14 @@ const docTemplate = `{
         },
         "/bullet/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    },
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new bullet",
                 "consumes": [
                     "application/json"
@@ -135,6 +153,11 @@ const docTemplate = `{
         },
         "/bullet/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing bullet",
                 "consumes": [
                     "application/json"
@@ -173,6 +196,11 @@ const docTemplate = `{
         },
         "/bullet/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing bullet by ID",
                 "consumes": [
                     "application/json"
@@ -211,6 +239,11 @@ const docTemplate = `{
         },
         "/bullet/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all bullets",
                 "consumes": [
                     "application/json"
@@ -257,6 +290,14 @@ const docTemplate = `{
         },
         "/bullet/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    },
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing bullet",
                 "consumes": [
                     "application/json"
@@ -304,6 +345,11 @@ const docTemplate = `{
         },
         "/commander/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new commander",
                 "consumes": [
                     "application/json"
@@ -344,6 +390,11 @@ const docTemplate = `{
         },
         "/commander/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing commander",
                 "consumes": [
                     "application/json"
@@ -382,6 +433,11 @@ const docTemplate = `{
         },
         "/commander/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing commander by ID",
                 "consumes": [
                     "application/json"
@@ -420,6 +476,11 @@ const docTemplate = `{
         },
         "/commander/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all commanders",
                 "consumes": [
                     "application/json"
@@ -461,6 +522,11 @@ const docTemplate = `{
         },
         "/commander/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing commander",
                 "consumes": [
                     "application/json"
@@ -508,6 +574,11 @@ const docTemplate = `{
         },
         "/department/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new department",
                 "consumes": [
                     "application/json"
@@ -548,6 +619,11 @@ const docTemplate = `{
         },
         "/department/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing department",
                 "consumes": [
                     "application/json"
@@ -586,6 +662,11 @@ const docTemplate = `{
         },
         "/department/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing department by ID",
                 "consumes": [
                     "application/json"
@@ -624,6 +705,11 @@ const docTemplate = `{
         },
         "/department/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all departments",
                 "consumes": [
                     "application/json"
@@ -660,6 +746,11 @@ const docTemplate = `{
         },
         "/department/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing department",
                 "consumes": [
                     "application/json"
@@ -707,6 +798,11 @@ const docTemplate = `{
         },
         "/fuel/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new fuel entry",
                 "consumes": [
                     "application/json"
@@ -747,6 +843,11 @@ const docTemplate = `{
         },
         "/fuel/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing fuel entry",
                 "consumes": [
                     "application/json"
@@ -785,6 +886,11 @@ const docTemplate = `{
         },
         "/fuel/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing fuel entry by ID",
                 "consumes": [
                     "application/json"
@@ -823,6 +929,11 @@ const docTemplate = `{
         },
         "/fuel/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all fuel entries",
                 "consumes": [
                     "application/json"
@@ -864,6 +975,11 @@ const docTemplate = `{
         },
         "/fuel/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing fuel entry",
                 "consumes": [
                     "application/json"
@@ -911,6 +1027,11 @@ const docTemplate = `{
         },
         "/group/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new group",
                 "consumes": [
                     "application/json"
@@ -951,6 +1072,11 @@ const docTemplate = `{
         },
         "/group/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing group",
                 "consumes": [
                     "application/json"
@@ -989,6 +1115,11 @@ const docTemplate = `{
         },
         "/group/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing group by ID",
                 "consumes": [
                     "application/json"
@@ -1027,6 +1158,11 @@ const docTemplate = `{
         },
         "/group/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all groups",
                 "consumes": [
                     "application/json"
@@ -1063,6 +1199,11 @@ const docTemplate = `{
         },
         "/group/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing group",
                 "consumes": [
                     "application/json"
@@ -1110,6 +1251,11 @@ const docTemplate = `{
         },
         "/soldier/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new soldier",
                 "consumes": [
                     "application/json"
@@ -1150,6 +1296,11 @@ const docTemplate = `{
         },
         "/soldier/dashbord": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all Dashbord",
                 "consumes": [
                     "application/json"
@@ -1216,6 +1367,11 @@ const docTemplate = `{
         },
         "/soldier/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing soldier",
                 "consumes": [
                     "application/json"
@@ -1254,6 +1410,11 @@ const docTemplate = `{
         },
         "/soldier/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing soldier by ID",
                 "consumes": [
                     "application/json"
@@ -1292,6 +1453,11 @@ const docTemplate = `{
         },
         "/soldier/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all soldiers",
                 "consumes": [
                     "application/json"
@@ -1338,6 +1504,11 @@ const docTemplate = `{
         },
         "/soldier/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing soldier",
                 "consumes": [
                     "application/json"
@@ -1385,6 +1556,11 @@ const docTemplate = `{
         },
         "/soldier/usebullet": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Record the use of bullets by a soldier",
                 "consumes": [
                     "application/json"
@@ -1425,6 +1601,11 @@ const docTemplate = `{
         },
         "/soldier/usefuel": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Record the use of fuel by a soldier",
                 "consumes": [
                     "application/json"
@@ -1465,6 +1646,11 @@ const docTemplate = `{
         },
         "/technique/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new technique entry",
                 "consumes": [
                     "application/json"
@@ -1505,6 +1691,11 @@ const docTemplate = `{
         },
         "/technique/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing technique entry",
                 "consumes": [
                     "application/json"
@@ -1543,6 +1734,11 @@ const docTemplate = `{
         },
         "/technique/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing technique entry by ID",
                 "consumes": [
                     "application/json"
@@ -1581,6 +1777,11 @@ const docTemplate = `{
         },
         "/technique/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all technique entries",
                 "consumes": [
                     "application/json"
@@ -1627,6 +1828,11 @@ const docTemplate = `{
         },
         "/technique/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing technique entry",
                 "consumes": [
                     "application/json"
@@ -2028,17 +2234,24 @@ const docTemplate = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authourization",
+            "in": "header"
+        }
     }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
-	BasePath:         "",
+	Version:          "1.0",
+	Host:             "localhost:8080",
+	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "",
-	Description:      "",
+	Description:      "Millitary service",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

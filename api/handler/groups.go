@@ -13,6 +13,7 @@ import (
 // @Tags         Group
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        GroupReq  body     pb.GroupReq  true  "Group Request"
 // @Success      200       {string} string       "Create Successful"
 // @Failure      401       {string} string       "Error while creating"
@@ -37,6 +38,7 @@ func (h *Handler) CreateGroup(ctx *gin.Context) {
 // @Tags         Group
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id       path     string     true  "Group ID"
 // @Param        Group    body     pb.Group   true  "Group"
 // @Success      200      {string} string     "Update Successful"
@@ -63,6 +65,7 @@ func (h *Handler) UpdateGroup(ctx *gin.Context) {
 // @Tags         Group
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id     path     string   true  "Group ID"
 // @Success      200    {string} string  "Delete Successful"
 // @Failure      401    {string} string  "Error while deleting"
@@ -83,6 +86,7 @@ func (h *Handler) DeleteGroup(ctx *gin.Context) {
 // @Tags         Group
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id     path     string     true  "Group ID"
 // @Success      200    {object} pb.Group  "Get Successful"
 // @Failure      401    {string} string    "Error while getting"
@@ -103,6 +107,7 @@ func (h *Handler) GetGroup(ctx *gin.Context) {
 // @Tags         Group
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.GetAllDepartmentFilter  true  "Query parameter"
 // @Success      200    {object} pb.AllGroups "Get All Successful"
 // @Failure      401    {string} string       "Error while getting all"

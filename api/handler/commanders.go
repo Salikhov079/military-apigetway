@@ -15,6 +15,7 @@ import (
 // @Tags         Commander
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        CommanderReq  body     pb.CreateCommand  true  "Commander Request"
 // @Success      200           {string} string           "Create Successful"
 // @Failure      401           {string} string           "Error while creating"
@@ -39,6 +40,7 @@ func (h *Handler) CreateCommander(ctx *gin.Context) {
 // @Tags         Commander
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id          path     string           true  "Commander ID"
 // @Param        Commander   body     pb.Commander     true  "Commander"
 // @Success      200         {string} string           "Update Successful"
@@ -65,6 +67,7 @@ func (h *Handler) UpdateCommander(ctx *gin.Context) {
 // @Tags         Commander
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id       path     string   true  "Commander ID"
 // @Success      200      {string} string  "Delete Successful"
 // @Failure      401      {string} string  "Error while deleting"
@@ -85,6 +88,7 @@ func (h *Handler) DeleteCommander(ctx *gin.Context) {
 // @Tags         Commander
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id       path     string      true  "Commander ID"
 // @Success      200      {object} pb.Commander "Get Successful"
 // @Failure      401      {string} string       "Error while getting"
@@ -105,6 +109,7 @@ func (h *Handler) GetCommander(ctx *gin.Context) {
 // @Tags         Commander
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.GetAllFilter  true  "Query parameter"
 // @Success      200    {object} pb.AllCommanders "Get All Successful"
 // @Failure      401    {string} string           "Error while getting all"

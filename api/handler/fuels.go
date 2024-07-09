@@ -15,6 +15,7 @@ import (
 // @Tags         Fuel
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        FuelReq  body     pb.FuelReq  true  "Fuel Request"
 // @Success      200      {string} string      "Create Successful"
 // @Failure      400      {string} string      "Error while creating"
@@ -39,6 +40,7 @@ func (h *Handler) CreateFuel(ctx *gin.Context) {
 // @Tags         Fuel
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id    path     string    true  "Fuel ID"
 // @Param        Fuel  body     pb.Fuel   true  "Fuel"
 // @Success      200   {string} string    "Update Successful"
@@ -65,6 +67,7 @@ func (h *Handler) UpdateFuel(ctx *gin.Context) {
 // @Tags         Fuel
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id    path     string    true  "Fuel ID"
 // @Success      200   {string} string    "Delete Successful"
 // @Failure      400   {string} string    "Error while deleting"
@@ -85,6 +88,7 @@ func (h *Handler) DeleteFuel(ctx *gin.Context) {
 // @Tags         Fuel
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        id    path     string    true  "Fuel ID"
 // @Success      200   {object} pb.Fuel   "Get Successful"
 // @Failure      400   {string} string    "Error while getting"
@@ -105,6 +109,7 @@ func (h *Handler) GetFuel(ctx *gin.Context) {
 // @Tags         Fuel
 // @Accept       json
 // @Produce      json
+// @Security  		BearerAuth
 // @Param        query  query    pb.FuelReq  true  "Query parameter"
 // @Success      200    {object} pb.AllFuels "Get All Successful"
 // @Failure      400    {string} string      "Error while getting all"

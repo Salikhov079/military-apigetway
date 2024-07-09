@@ -1,11 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "Millitary service",
+        "contact": {},
+        "version": "1.0"
     },
+    "host": "localhost:8080",
+    "basePath": "/",
     "paths": {
         "/ai/chat": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "CHat with AI",
                 "consumes": [
                     "application/json"
@@ -46,6 +55,11 @@
         },
         "/ai/gethistory/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "CHat with AI",
                 "consumes": [
                     "application/json"
@@ -84,6 +98,14 @@
         },
         "/bullet/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    },
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new bullet",
                 "consumes": [
                     "application/json"
@@ -124,6 +146,11 @@
         },
         "/bullet/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing bullet",
                 "consumes": [
                     "application/json"
@@ -162,6 +189,11 @@
         },
         "/bullet/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing bullet by ID",
                 "consumes": [
                     "application/json"
@@ -200,6 +232,11 @@
         },
         "/bullet/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all bullets",
                 "consumes": [
                     "application/json"
@@ -246,6 +283,14 @@
         },
         "/bullet/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    },
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing bullet",
                 "consumes": [
                     "application/json"
@@ -293,6 +338,11 @@
         },
         "/commander/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new commander",
                 "consumes": [
                     "application/json"
@@ -333,6 +383,11 @@
         },
         "/commander/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing commander",
                 "consumes": [
                     "application/json"
@@ -371,6 +426,11 @@
         },
         "/commander/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing commander by ID",
                 "consumes": [
                     "application/json"
@@ -409,6 +469,11 @@
         },
         "/commander/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all commanders",
                 "consumes": [
                     "application/json"
@@ -450,6 +515,11 @@
         },
         "/commander/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing commander",
                 "consumes": [
                     "application/json"
@@ -497,6 +567,11 @@
         },
         "/department/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new department",
                 "consumes": [
                     "application/json"
@@ -537,6 +612,11 @@
         },
         "/department/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing department",
                 "consumes": [
                     "application/json"
@@ -575,6 +655,11 @@
         },
         "/department/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing department by ID",
                 "consumes": [
                     "application/json"
@@ -613,6 +698,11 @@
         },
         "/department/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all departments",
                 "consumes": [
                     "application/json"
@@ -649,6 +739,11 @@
         },
         "/department/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing department",
                 "consumes": [
                     "application/json"
@@ -696,6 +791,11 @@
         },
         "/fuel/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new fuel entry",
                 "consumes": [
                     "application/json"
@@ -736,6 +836,11 @@
         },
         "/fuel/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing fuel entry",
                 "consumes": [
                     "application/json"
@@ -774,6 +879,11 @@
         },
         "/fuel/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing fuel entry by ID",
                 "consumes": [
                     "application/json"
@@ -812,6 +922,11 @@
         },
         "/fuel/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all fuel entries",
                 "consumes": [
                     "application/json"
@@ -853,6 +968,11 @@
         },
         "/fuel/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing fuel entry",
                 "consumes": [
                     "application/json"
@@ -900,6 +1020,11 @@
         },
         "/group/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new group",
                 "consumes": [
                     "application/json"
@@ -940,6 +1065,11 @@
         },
         "/group/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing group",
                 "consumes": [
                     "application/json"
@@ -978,6 +1108,11 @@
         },
         "/group/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing group by ID",
                 "consumes": [
                     "application/json"
@@ -1016,6 +1151,11 @@
         },
         "/group/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all groups",
                 "consumes": [
                     "application/json"
@@ -1052,6 +1192,11 @@
         },
         "/group/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing group",
                 "consumes": [
                     "application/json"
@@ -1099,6 +1244,11 @@
         },
         "/soldier/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new soldier",
                 "consumes": [
                     "application/json"
@@ -1139,6 +1289,11 @@
         },
         "/soldier/dashbord": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all Dashbord",
                 "consumes": [
                     "application/json"
@@ -1205,6 +1360,11 @@
         },
         "/soldier/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing soldier",
                 "consumes": [
                     "application/json"
@@ -1243,6 +1403,11 @@
         },
         "/soldier/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing soldier by ID",
                 "consumes": [
                     "application/json"
@@ -1281,6 +1446,11 @@
         },
         "/soldier/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all soldiers",
                 "consumes": [
                     "application/json"
@@ -1327,6 +1497,11 @@
         },
         "/soldier/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing soldier",
                 "consumes": [
                     "application/json"
@@ -1374,6 +1549,11 @@
         },
         "/soldier/usebullet": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Record the use of bullets by a soldier",
                 "consumes": [
                     "application/json"
@@ -1414,6 +1594,11 @@
         },
         "/soldier/usefuel": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Record the use of fuel by a soldier",
                 "consumes": [
                     "application/json"
@@ -1454,6 +1639,11 @@
         },
         "/technique/create": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new technique entry",
                 "consumes": [
                     "application/json"
@@ -1494,6 +1684,11 @@
         },
         "/technique/delete/{id}": {
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete an existing technique entry",
                 "consumes": [
                     "application/json"
@@ -1532,6 +1727,11 @@
         },
         "/technique/get/{id}": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get an existing technique entry by ID",
                 "consumes": [
                     "application/json"
@@ -1570,6 +1770,11 @@
         },
         "/technique/getall": {
             "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Get all technique entries",
                 "consumes": [
                     "application/json"
@@ -1616,6 +1821,11 @@
         },
         "/technique/update/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update an existing technique entry",
                 "consumes": [
                     "application/json"
@@ -2016,6 +2226,13 @@
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authourization",
+            "in": "header"
         }
     }
 }
